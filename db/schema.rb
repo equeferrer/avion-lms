@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_054342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "batch_lessons", force: :cascade do |t|
     t.bigint "batch_id", null: false
     t.bigint "lesson_id", null: false
@@ -45,7 +44,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_054342) do
 
   add_foreign_key "batch_lessons", "batches"
   add_foreign_key "batch_lessons", "lessons"
-=======
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -60,7 +58,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_054342) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
->>>>>>> Adds Admin Model and Migration
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
