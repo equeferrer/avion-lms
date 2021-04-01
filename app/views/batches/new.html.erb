@@ -1,0 +1,31 @@
+<h1> Batches#new </h1>
+<p> Find me in app/views/batches/new.html.erb </p>
+
+<% if @batch.errors.any?%>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Whoops!</strong> <%= @batch.errors.full_messages.to_sentence %>
+  </div>
+<% end%>
+
+<%= form_with scope:@batch, url: batch_create_path , local:true do |f| %>
+
+	<p>
+	   <%= f.label :name %> <br/>
+	   <%= f.text_field :name %>
+	</p> 
+
+	<p>
+	   <%= f.label :start_date %> <br/>
+	   <%= f.date_field :start_date %>
+	</p> 
+
+	<p>
+	   <%= f.label :end_date %> <br/>
+	   <%= f.date_field :end_date %>
+	</p>
+
+	<p>
+	   <%= f.submit "Create Batch" %> <br/>
+	</p> 
+<% end %>
