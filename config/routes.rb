@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get '/lessons'          => 'lessons#index'
+  get '/lessons/new'      => 'lessons#new'
+  post '/lessons'         => 'lessons#create',  as: 'lesson_create'
+  get '/lessons/:id'      => 'lessons#show',    as: 'lesson_show'
+  get 'lessons/edit/:id'  => 'lessons#edit',    as: 'lesson_edit'
+  patch 'lessons/:id'     => 'lessons#update',  as: 'lesson_update'
+  delete 'lessons/:id'    => 'lessons#destroy', as: 'lesson_delete'
   get '/batches'          => 'batches#index'
   get '/batches/new'      => 'batches#new'
   post '/batches'         => 'batches#create',  as: 'batch_create'
