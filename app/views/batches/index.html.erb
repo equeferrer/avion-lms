@@ -1,0 +1,28 @@
+<h1>Batches#index</h1>
+<p>Find me in app/views/batches/index.html.erb<p>
+<div class="container mt-1 p-5">
+  <table class="table table-light table-striped table-bordered table-hover" style="overflow-x:auto;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @batches.each do |batch| %>
+      <tr>
+        <td> <%= batch.name %></td>
+        <td> <%= batch.start_date %></td>
+        <td> <%= batch.end_date %></td>
+        <td> <%= link_to "View", batch_show_path(batch)%> </td>
+        <td> <%= link_to "Edit", batch_edit_path(batch)%> </td> 
+        <td> <%= link_to "Delete", batch_delete_path(batch), :method => :Delete, data: {confirm: "Are you sure you want to delete this?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <%= link_to "Back", :back, class:"btn btn-secondary"%>
+</div>
