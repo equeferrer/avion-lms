@@ -23,16 +23,16 @@ RSpec.describe 'LessonsController', type: :request do
   end
 
   describe 'POST /lessons' do
-    it 'lets admin create new batch' do
-      params = { name: 'Test Batch', start_date: '01-01-2021', end_date: '02-01-2021' }
-      post lesson_create_path, params: { batch: params }
-      expect(response).to redirect_to(batches_path)
+    it 'lets admin create new lesson' do
+      params = { name: 'Test Lesson 2', content: 'Sample content for Test lesson 2' }
+      post lesson_create_path, params: { lesson: params }
+      expect(response).to redirect_to(lessons_path)
     end
   end
 
   describe 'GET /lessons/:id' do
-    it 'views a specific batch' do
-      get batch_show_path(id: batch.id)
+    it 'views a specific lesson' do
+      get lesson_show_path(id: lesson.id)
       expect(response).to have_http_status(:ok)
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe 'LessonsController', type: :request do
   describe 'DELETE /lessons/:id' do
     it 'deletes a specific lesson' do
       delete lessons_delete_path(id: lesson.id)
-      expect { Batch.find(lesson.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      expect { Lesson.find(lesson.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end
