@@ -1,0 +1,37 @@
+<h1> Batches#edit </h1>
+<p>Find me in app/views/batches/edit.html.erb<p>
+
+<h1>Edit Batch</h1>
+
+<%= form_for @batch, url:batch_update_path(@batch) do |f| %>
+
+	<p>
+	   <%= f.label :name %> <br/>
+	   <%= f.text_field :name %>
+	</p> 
+
+	<p>
+	   <%= f.label :start_date %> <br/>
+	   <%= f.date_field :start_date %>
+	</p> 
+
+	<p>
+	   <%= f.label :end_date %> <br/>
+	   <%= f.date_field :end_date %>
+	</p> 
+
+	<p>
+	   <%= f.submit "Update Batch" %> <br/>
+	</p> 
+<% end %>
+
+<p>
+	<% if @batch.errors.any?%>
+		<ul>
+			<% @batch.errors.full_messages.each do |message| %>
+				<li> <%= message %> </li>
+			<% end %>
+		</ul>
+
+	<% end%>
+</p>
