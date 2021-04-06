@@ -1,0 +1,32 @@
+<h1> Lessons#edit </h1>
+<p>Find me in app/views/lessons/edit.html.erb<p>
+
+<h1>Edit Lesson</h1>
+
+<%= form_for @lesson, url:lesson_update_path(@lesson) do |f| %>
+
+	<p>
+	   <%= f.label :title %> <br/>
+	   <%= f.text_field :title %>
+	</p> 
+
+	<p>
+	   <%= f.label :content %> <br/>
+	   <%= f.text_field :content %>
+	</p> 
+
+	<p>
+	   <%= f.submit "Update Lesson" %> <br/>
+	</p> 
+<% end %>
+
+<p>
+	<% if @lesson.errors.any?%>
+		<ul>
+			<% @lesson.errors.full_messages.each do |message| %>
+				<li> <%= message %> </li>
+			<% end %>
+		</ul>
+
+	<% end%>
+</p>
