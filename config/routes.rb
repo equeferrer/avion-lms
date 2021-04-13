@@ -13,7 +13,20 @@ Rails.application.routes.draw do
   get 'batches/edit/:id'  => 'batches#edit',    as: 'batch_edit'
   patch 'batches/:id'     => 'batches#update',  as: 'batch_update'
   delete 'batches/:id'    => 'batches#destroy', as: 'batch_delete'
-  devise_for :admins
-  devise_for :students
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get "pages/:page" => "pages#show"
+  root to: "pages#show", page: "home", as: :root
+
+  devise_for :students, path: '',
+    controllers: { registrations: "students/registrations" }
+  devise_for :admins, path: 'admins',
+    controllers: { registrations: "admins/registrations" }
+
+  # Dashboard Paths
+  get 'dashboard' => "students#dashboard", as: :student_dashboard
+  get 'admins/dashboard' => "admins#dashboard", as: :admin_dashboard
+
+  resources :students
+  resources :admins
+
 end
