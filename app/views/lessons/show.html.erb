@@ -1,9 +1,17 @@
-<h2> <%= @lesson.title %> </h2>
-<h2> <%= @lesson.content %> </h2>
-<%# <h2> Batch List </h2> %>
+<h2> <%= @lesson.title %> </h2> <br>
 
-<h2> Video URL </h2>
-<iframe src="<%= @lesson.video_url %>" width="640" height="480"></iframe>
+<div class="flex d-flex">
+  <div class="col-4 gray-header">
+    <%= link_to "Edit", lesson_edit_path(@lesson)%> <br>
+    <%= link_to "Document Link", @lesson.document_url, target: "_blank" %> <br>
+    <h3> In this lesson, we will cover the following: </h3>
+    <h4> <%= @lesson.content %> </h4> <br>
+    Update Progress button
+    Go back to Lessons link
+  </div>
 
-<h2> Doc URL </h2>
-<%= link_to "Document Link", @lesson.document_url, target: "_blank" %>
+
+  <div class="col-7">
+    <iframe src="<%= @lesson.video_url %>" width="640" height="480"></iframe>
+  </div>
+</div>
