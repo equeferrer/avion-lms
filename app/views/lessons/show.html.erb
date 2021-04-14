@@ -3,6 +3,10 @@
 
 <h2> <%= @lesson.title %> </h2>
 <h2> <%= @lesson.content %> </h2>
-<h2> Batch List </h2>
+<%# <h2> Batch List </h2> %>
+
 <h2> Video URL </h2>
+<iframe src="<%= @lesson.video_url %>" width="640" height="480"></iframe>
+
 <h2> Doc URL </h2>
+<%= link_to "Document Link", @lesson.document_url, :target => ‘_blank’ %>
