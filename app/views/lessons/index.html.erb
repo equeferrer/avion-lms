@@ -16,8 +16,8 @@
       <tr>
         <td> <%= lesson.title %></td>
         <td> <%= lesson.content %></td>
-        <td> <%= lesson.video_url %> </td>
-        <td> <%= lesson.document_url %> </td>
+        <td> <%= link_to "video", lesson.video_url %> </td>
+        <td> <%= link_to "lesson", lesson.document_url %> </td>
         <td> <%= link_to "View", lesson_show_path(lesson)%> </td>
         <td> <%= link_to "Edit", lesson_edit_path(lesson)%> </td> 
         <td> <%= link_to "Delete", lesson_delete_path(lesson), :method => :Delete, data: {confirm: "Are you sure you want to delete this?"} %></td>
