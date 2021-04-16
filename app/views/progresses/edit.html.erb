@@ -1,2 +1,15 @@
-%h1 Progresses#edit
-%p Find me in app/views/progresses/edit.html.haml
+<%= form_for @progress, url:progress_update_path(@progress) do |f| %>
+	<p>
+	   <%= f.label :username %> <br/>
+	   <%= f.text_field :username %>
+	</p> 
+
+	<p>
+	   <%= f.label :repo %> <br/>
+	   <%= f.text_field :repo %>
+	</p> 
+
+	<p>
+	   <%= f.submit "Create Progress" %> <br/>
+	</p> 
+<% end %>
