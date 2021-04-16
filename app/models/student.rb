@@ -6,6 +6,7 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   belongs_to :batch
+  has_one :progress, dependent: :destroy
   # before_create :add_to_batch
 
   # def add_to_batch

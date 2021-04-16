@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_133931) do
+ActiveRecord::Schema.define(version: 2021_04_16_082059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2021_04_14_133931) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "progresses", force: :cascade do |t|
+    t.string "username"
+    t.string "repo"
+    t.integer "passed"
+    t.integer "total"
+    t.text "pending"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,10 +78,13 @@ ActiveRecord::Schema.define(version: 2021_04_14_133931) do
     t.string "last_name"
     t.string "github_user"
     t.integer "batch_id"
+    t.bigint "progress_id"
     t.index ["email"], name: "index_students_on_email", unique: true
+    t.index ["progress_id"], name: "index_students_on_progress_id"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
   add_foreign_key "batch_lessons", "batches"
   add_foreign_key "batch_lessons", "lessons"
+  add_foreign_key "students", "progresses"
 end
