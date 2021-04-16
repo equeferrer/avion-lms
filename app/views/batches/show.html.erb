@@ -1,16 +1,35 @@
-<%# <div>  left side%>
-<h2> Batch: <%= @batch.name %> </h2>
-<h2> Start Date:  <%= @batch.start_date %> </h2>
-<h2> End Date:  <%= @batch.end_date %> </h2>
-<details>
-  <summary> Lesson List: <%= @batch.lessons.count %> </summary>
-  <% @batch.lessons.each do |lesson| %>
-    <p> <%= lesson.title %> </p>
-  <% end %>
-</details>
-<%# <div> right side  %>
-<h2> Student List </h2>
-<%= @batch.students.inspect %>
-<% @batch.students.each do |student| %>
-<p> <%= student.first_name %> <%= student.last_name %>, Progress </p>
-<% end %>
+<div class="flex d-flex">
+  <div class="col-4 gray-header">
+    <h2> Batch: <%= @batch.name %> </h2>
+    <h2> Start Date:  <%= @batch.start_date.strftime('%b. %e, %Y') %> </h2>
+    <h2> End Date:  <%= @batch.end_date.strftime('%b. %e, %Y') %> </h2>
+    <details>
+      <summary> Lesson List: <%= @batch.lessons.count %> </summary>
+      <% @batch.lessons.each do |lesson| %>
+        <p> <%= lesson.title %> </p>
+      <% end %>
+    </details>
+  </div>
+
+  <div class="col-7">
+    <h2> Student List </h2>
+    <table class="table table-light table-striped table-bordered table-hover" style="width: 70%">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Progress</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @batch.students.each do |student| %>
+      <tr>
+        <td> <%= student.first_name %></td>
+        <td> <%= student.last_name %></td>
+        <td style="text-align:center"> <%= student.progress.passed %>/<%=student.progress.total%> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-<h1>Lessons</h1>
 <% if admin_signed_in? %>
-<div class="container mt-1 p-5">
+<div class="container-sm mt-1 p-5">
+  <h1>Lessons</h1>
   <table class="table table-light table-striped table-bordered table-hover" style="overflow-x:auto;">
     <thead>
       <tr>
@@ -16,8 +16,8 @@
       <tr>
         <td> <%= lesson.title %></td>
         <td> <%= lesson.content %></td>
-        <td> <%= link_to "video", lesson.video_url %> </td>
-        <td> <%= link_to "lesson", lesson.document_url %> </td>
+        <td> <%= link_to "Video", lesson.video_url %> </td>
+        <td> <%= link_to "Lesson", lesson.document_url, target: "_blank" %></td>
         <td> <%= link_to "View", lesson_show_path(lesson)%> </td>
         <td> <%= link_to "Edit", lesson_edit_path(lesson)%> </td> 
         <td> <%= link_to "Delete", lesson_delete_path(lesson), :method => :Delete, data: {confirm: "Are you sure you want to delete this?"} %></td>
@@ -25,12 +25,14 @@
       <% end %>
     </tbody>
   </table>
-  <br/>
-  <%= link_to "Create New Lesson", lessons_new_path, class: "btn btn-secondary" %>
+  <br/> <br/>
+  <%= link_to "Create New Lesson", lessons_new_path, class: "btn" %>
   <%= link_to "Back", :back, class:"btn btn-secondary"%>
 </div>
 <% elsif student_signed_in? %>
-  <% @lessons.each do |lesson| %>
-    <div><%= lesson.title %> <%= link_to "View", lesson_show_path(lesson) %> </div>
-  <% end %>
+  <div class="flex d-flex justify-content-space-around">
+    <% @lessons.each do |lesson| %>
+      <div><%= link_to "#{lesson.title}", lesson_show_path(lesson), class: 'btn lesson-box' %> </div>
+    <% end %>
+  </div>
 <% end %>

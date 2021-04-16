@@ -1,11 +1,31 @@
-<%= @progress.inspect %>
-<% @progress.pending.split('; ').each do |item| %>
-  <p> <%= item %> </p>
-<% end %>
-<%# GO TO LESSONS LINK! %>
-<br> <br> <br>
-<%= form_for @progress, url:progress_update_path(@progress) do |f| %>
-	<p> <%= f.text_field :username, :readonly => true, class: 'hidden' %> </p>
-	<p> <%= f.text_field :repo, :readonly => true, class: 'hidden' %> </p>
-	<p>	   <%= f.submit "Update My Progress" %>	</p> 
-<% end %>
+<div class="container flex d-flex">
+  <div class="col-4">
+    Username: <%= @progress.username %> <br>
+    Repository Name: <%= @progress.repo %> <br>
+    Last updated: <%= time_ago_in_words(@progress.updated_at) %> ago <br>
+    <%= link_to "View Repository", "https://github.com/#{@progress.username}/#{@progress.repo}/", :target => "_blank" %> <br>
+    <%= link_to "Edit Progress", progress_edit_path(@progress) %>
+    <div class="circle dark" style="margin-top:20px;"> 
+      <div><%= current_student.progress.passed %> / <%= current_student.progress.total %> </div>
+      <div style="font-size:12px"> tasks completed </div>
+    </div>
+    <br> <br> <br>
+    <%= form_for @progress, url:progress_update_path(@progress) do |f| %>
+      <%= f.text_field :username, :readonly => true, class: 'hidden' %>
+      <%= f.text_field :repo, :readonly => true, class: 'hidden' %>
+      <%= f.submit "Update My Progress", class: 'btn' %>
+    <% end %>
+  </div>
+
+  <div class="col-5 gray-header">
+    <% if !@progress.pending.blank?%>
+      Pending Lessons:
+      <% @progress.pending.split('; ').each do |item| %>
+        <p> <%= item %> </p>
+      <% end %>
+      <%= link_to "View all lessons", lessons_path %>
+    <% else %>
+      Congratulations! No pending test!
+    <% end %>
+  </div>
+</div>

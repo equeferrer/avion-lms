@@ -1,6 +1,3 @@
-<h1> Batches#edit </h1>
-<p>Find me in app/views/batches/edit.html.erb<p>
-
 <h1>Edit Batch</h1>
 
 <%= form_for @batch, url:batch_update_path(@batch) do |f| %>
@@ -21,7 +18,7 @@
 	</p> 
 
 	<p>
-	   <%= f.submit "Update Batch" %> <br/>
+	   <%= f.submit "Update Batch", class: 'btn' %> <br/>
 	</p> 
 <% end %>
 

@@ -1,7 +1,7 @@
 <header id="header"> 
   <!-- NAVIGATION -->
     <nav id="nav-bar">
-      <a class="navbar-brand mx-3" href="#"><b>Avion LMS</b></a>
+      <a class="navbar-brand nav-link mx-3" href="#"><b>Avion LMS</b></a>
     <!-- MENU TOGGLER -->
       <input type="checkbox" class="toggle-menu"> 
       <div class="hamburger">
@@ -25,7 +25,7 @@
             <%= link_to 'Edit Profile', edit_admin_registration_path , class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log out', destroy_admin_session_path, class:"nav-link", method: :delete %>
+            <%= link_to 'Log out', destroy_admin_session_path, class:"btn btn-light nav-link", method: :delete %>
           </li>
 
         <% elsif student_signed_in? %>
@@ -33,6 +33,15 @@
           <li class="nav-item">
             <%= link_to 'Home', student_dashboard_path , class:"nav-link" %>
           </li>
+          <% if current_student.progress.blank? %>
+            <li class="nav-item">
+              <%= link_to 'My Progress', progresses_new_path, class:"nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'My Progress', progress_show_path(current_student.progress), class:"nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to 'Lessons', lessons_path, class:"nav-link" %>
           </li>
@@ -40,7 +49,7 @@
             <%= link_to 'Edit Profile', edit_student_registration_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log out', destroy_student_session_path, class:"nav-link", method: :delete %>
+            <%= link_to 'Log out', destroy_student_session_path, class:"btn btn-light nav-link", method: :delete %>
           </li>
 
         <% else%>
@@ -52,7 +61,7 @@
             <%= link_to 'Log in', new_student_session_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Sign up', new_student_registration_path, class:"nav-link" %>
+            <%= link_to 'Sign up', new_student_registration_path, class:"btn btn-light nav-link" %>
           </li>
 
         <% end %>

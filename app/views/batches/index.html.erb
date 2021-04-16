@@ -1,7 +1,6 @@
-<h1>Batches#index</h1>
-<p>Find me in app/views/batches/index.html.erb<p>
-<div class="container mt-1 p-5">
-  <table class="table table-light table-striped table-bordered table-hover" style="overflow-x:auto;">
+<div class="container-sm">
+  <h1>Batches</h1>
+  <table class="table table-light table-striped table-bordered table-hover" style="width: 50%">
     <thead>
       <tr>
         <th>Name</th>
@@ -24,6 +23,6 @@
     </tbody>
   </table>
   <br/>
-  <%= link_to "Create New Batch", batches_new_path, class: "btn btn-secondary" %>
+  <%= link_to "Create New Batch", batches_new_path, class: "btn" %>
   <%= link_to "Back", :back, class:"btn btn-secondary"%>
 </div>
