@@ -16,6 +16,7 @@ class BatchesController < ApplicationController
   def create
     @batch = Batch.new(batch_params)
     if @batch.save
+      @batch.lessons << Lesson.all
       redirect_to batches_path
     else
       render :new

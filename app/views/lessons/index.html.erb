@@ -1,5 +1,5 @@
-<h1>Lessons#index</h1>
-<p>Find me in app/views/lessons/index.html.erb<p>
+<h1>Lessons</h1>
+<% if admin_signed_in? %>
 <div class="container mt-1 p-5">
   <table class="table table-light table-striped table-bordered table-hover" style="overflow-x:auto;">
     <thead>
@@ -26,5 +26,11 @@
     </tbody>
   </table>
   <br/>
+  <%= link_to "Create New Lesson", lessons_new_path, class: "btn btn-secondary" %>
   <%= link_to "Back", :back, class:"btn btn-secondary"%>
 </div>
+<% elsif student_signed_in? %>
+  <% @lessons.each do |lesson| %>
+    <div><%= lesson.title %> <%= link_to "View", lesson_show_path(lesson) %> </div>
+  <% end %>
+<% end %>

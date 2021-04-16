@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :batch_id %><br />
+    <%= f.email_field :batch_id, :readonly => true, value: Batch.last.id %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
