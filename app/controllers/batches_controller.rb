@@ -1,5 +1,5 @@
 class BatchesController < ApplicationController
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @batches = Batch.all
@@ -16,6 +16,7 @@ class BatchesController < ApplicationController
   def create
     @batch = Batch.new(batch_params)
     if @batch.save
+      @batch.lessons << Lesson.all
       redirect_to batches_path
     else
       render :new

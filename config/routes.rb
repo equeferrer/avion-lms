@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get '/progresses/new'      => 'progresses#new'
+  post '/progresses/create'  => 'progresses#create', as: 'progress_create'
+  get '/progresses/:id'      => 'progresses#show',   as: 'progress_show'
+  get '/progresses/edit/:id' => 'progresses#edit',   as: 'progress_edit'
+  patch 'progresses/:id'     => 'progresses#update', as: 'progress_update'
   get '/lessons'          => 'lessons#index'
   get '/lessons/new'      => 'lessons#new'
   post '/lessons'         => 'lessons#create',  as: 'lesson_create'

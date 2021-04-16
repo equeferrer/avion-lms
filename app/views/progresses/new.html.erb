@@ -1,0 +1,16 @@
+<%= form_with scope:@progress, url: progress_create_path , local:true do |f| %>
+
+	<p>
+	   <%= f.label :username %> <br/>
+	   <%= f.text_field :username %>
+	</p> 
+
+	<p>
+	   <%= f.label :repo %> <br/>
+	   <%= f.text_field :repo %>
+	</p> 
+
+	<p>
+	   <%= f.submit "Create Progress", class: 'btn' %> <br/>
+	</p> 
+<% end %>

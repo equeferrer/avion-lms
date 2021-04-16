@@ -1,13 +1,3 @@
-<h1> Lessons#new </h1>
-<p> Find me in app/views/lessons/new.html.erb </p>
-
-<% if @lesson.errors.any?%>
-  <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Whoops!</strong> <%= @batch.errors.full_messages.to_sentence %>
-  </div>
-<% end%>
-
 <%= form_with scope:@lesson, url: lesson_create_path , local:true do |f| %>
 
   <p>
@@ -21,6 +11,16 @@
 	</p> 
 
 	<p>
-	   <%= f.submit "Create Lesson" %> <br/>
+		<%= f.label :video_url %> <br/>
+		<%= f.text_field :video %>
+	</p>
+	
+	<p>
+		<%= f.label :document_url %> <br/>
+		<%= f.text_field :document_url %>
+	</p>
+	
+	<p>
+	   <%= f.submit "Create Lesson", class: 'btn' %> <br/>
 	</p> 
 <% end %>

@@ -1,8 +1,26 @@
-<h1> Lessons#show </h1>
-<p> Find me in app/views/lessons/show.html.erb </p>
+<h2> <%= @lesson.title %> </h2> <br>
 
-<h2> <%= @lesson.title %> </h2>
-<h2> <%= @lesson.content %> </h2>
-<h2> Batch List </h2>
-<h2> Video URL </h2>
-<h2> Doc URL </h2>
+<div class="flex d-flex">
+  <div class="col-4 gray-header">
+    <% if admin_signed_in? %>
+      <%= link_to "Edit", lesson_edit_path(@lesson)%> <br>
+    <% end %>
+    <%= link_to "Document Link", @lesson.document_url, target: "_blank" %> <br>
+    <h3> In this lesson, we will cover the following: </h3>
+    <h4> <%= @lesson.content %> </h4> <br>
+    <% if student_signed_in? %>
+      <%# Update Progress button <br> %>
+    <% end %>
+    <%= link_to "Back to Lessons", lessons_path %>
+    <% if !@previous.blank? %>
+      <p><%= link_to '< Previous', lesson_show_path(@previous) %></p> 
+    <% end %>
+    <% if !@next.blank? %>
+      <p><%= link_to 'Next >', lesson_show_path(@next) %></p> 
+    <% end %>
+  </div>
+
+  <div class="col-7">
+    <iframe src="<%= @lesson.video_url %>" width="640" height="480"></iframe>
+  </div>
+</div>

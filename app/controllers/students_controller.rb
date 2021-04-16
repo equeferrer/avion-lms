@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_admin!
-
+  before_action :authenticate_admin!, only: [:index]
+  before_action :authenticate_student!, only: [:dashboard]
   def index
     @students = Student.all
   end

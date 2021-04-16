@@ -1,6 +1,3 @@
-<h1> Lessons#edit </h1>
-<p>Find me in app/views/lessons/edit.html.erb<p>
-
 <h1>Edit Lesson</h1>
 
 <%= form_for @lesson, url:lesson_update_path(@lesson) do |f| %>
@@ -16,7 +13,17 @@
 	</p> 
 
 	<p>
-	   <%= f.submit "Update Lesson" %> <br/>
+		<%= f.label :video_url %> <br/>
+		<%= f.text_field :video_url %>
+	</p>
+	
+	<p>
+		<%= f.label :document_url %> <br/>
+		<%= f.text_field :document_url %>
+	</p>
+
+	<p>
+	   <%= f.submit "Update Lesson", class: 'btn' %> <br/>
 	</p> 
 <% end %>
 

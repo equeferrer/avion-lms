@@ -1,15 +1,8 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
-  def create
-    before_action :configure_sign_up_params
-    super
-  end
-
-  def update
-    before_action :configure_account_update_params
-    super
-  end
+  before_action :configure_sign_up_params
+  before_action :configure_account_update_params
 
   protected
 

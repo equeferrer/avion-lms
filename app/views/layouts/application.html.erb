@@ -12,9 +12,13 @@
   </head>
 
   <body>
-    <%= render partial: "shared/header" %>
-    <%= render partial: "shared/sidebar" %>
-    <%= yield %>
-    <%= render partial: "shared/footer" %>
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= render "shared/header" %>
+      <%#= render partial: "shared/sidebar" %>
+      <%= yield %>
+      <%#= render partial: "shared/footer" %>
+    </div>
   </body>
 </html>
