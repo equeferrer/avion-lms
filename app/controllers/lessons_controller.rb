@@ -7,6 +7,8 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(set_lesson)
+    @previous = @lesson.previous
+    @next = @lesson.next
   end
 
   def new
