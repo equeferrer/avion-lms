@@ -89,3 +89,11 @@ Lesson.create(
   video_url: 'https://drive.google.com/file/d/1J-3vVBqnO1-RcATa-M_QEUUx_hupnZ5G/preview',
   document_url: 'https://docs.avionschool.com/precourse/lessons/untitled-1',
 )
+
+Student.create(
+  first_name: 'Test', last_name: 'Student', email: 'student@test.com', password: '123456', batch_id: 2
+)
+
+Student.create(
+  first_name: 'Eque', last_name: 'Student', email: 'emferrer4@gmail.com', password: '123456', batch_id: 3
+)
