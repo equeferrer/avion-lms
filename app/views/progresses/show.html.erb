@@ -1,1 +1,11 @@
 <%= @progress.inspect %>
+<% @progress.pending.split('; ').each do |item| %>
+  <p> <%= item %> </p>
+<% end %>
+<%# GO TO LESSONS LINK! %>
+<br> <br> <br>
+<%= form_for @progress, url:progress_update_path(@progress) do |f| %>
+	<p> <%= f.text_field :username, :readonly => true, class: 'hidden' %> </p>
+	<p> <%= f.text_field :repo, :readonly => true, class: 'hidden' %> </p>
+	<p>	   <%= f.submit "Update My Progress" %>	</p> 
+<% end %>
