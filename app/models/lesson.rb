@@ -4,10 +4,11 @@ class Lesson < ApplicationRecord
   has_many :batch_lessons, dependent: :destroy
   has_many :batches, through: :batch_lessons
   def next
-    self.class.where("id > ?", id).first
+    a = self.class.where('id > ?', id)
+    a.first
   end
 
   def previous
-    self.class.where("id < ?", id).last
+    self.class.where('id < ?', id).last
   end
 end
