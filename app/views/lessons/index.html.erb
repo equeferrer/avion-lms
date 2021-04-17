@@ -30,7 +30,7 @@
   <%= link_to "Back", :back, class:"btn btn-secondary"%>
 </div>
 <% elsif student_signed_in? %>
-  <div class="flex d-flex justify-content-space-around">
+  <div class="flex d-flex justify-content-space-around wrap">
     <% @lessons.each do |lesson| %>
       <div><%= link_to "#{lesson.title}", lesson_show_path(lesson), class: 'btn lesson-box' %> </div>
     <% end %>

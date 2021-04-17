@@ -1,5 +1,20 @@
-<h2> <%= @lesson.title %> </h2> <br>
-
+<h2> <%= @lesson.title %> </h2>
+    <div class="float-left">
+      <div>
+        <% if !@previous.blank? %>
+          <%= link_to '< Previous Lesson', lesson_show_path(@previous), class: 'gray-text mb-1' %> <br>
+          <span class="gray-text"><%= @previous.title %> </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="float-right mr-1">
+      <div>
+        <% if !@next.blank? %>
+          <%= link_to 'Next Lesson >', lesson_show_path(@next), class: 'gray-text mb-1' %> <br>
+          <span class="gray-text"><%= @next.title %> </span>
+        <% end %>
+      </div>
+    </div> <br> <br> <br>
 <div class="flex d-flex">
   <div class="col-4 gray-header">
     <% if admin_signed_in? %>
@@ -7,17 +22,8 @@
     <% end %>
     <%= link_to "Document Link", @lesson.document_url, target: "_blank" %> <br>
     <h3> In this lesson, we will cover the following: </h3>
-    <h4> <%= @lesson.content %> </h4> <br>
-    <% if student_signed_in? %>
-      <%# Update Progress button <br> %>
-    <% end %>
+    <h4> <%= @lesson.content %> </h4> <br> <br>
     <%= link_to "Back to Lessons", lessons_path %>
-    <% if !@previous.blank? %>
-      <p><%= link_to '< Previous', lesson_show_path(@previous) %></p> 
-    <% end %>
-    <% if !@next.blank? %>
-      <p><%= link_to 'Next >', lesson_show_path(@next) %></p> 
-    <% end %>
   </div>
 
   <div class="col-7">
