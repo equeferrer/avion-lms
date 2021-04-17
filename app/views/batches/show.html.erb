@@ -13,21 +13,25 @@
 
   <div class="col-7">
     <h2> Student List </h2>
-    <table class="table table-light table-striped table-bordered table-hover" style="width: 70%">
+    <table class="table table-light table-striped table-bordered table-hover" style="width: 80%">
     <thead>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Progress</th>
+        <th>Last update</th>
       </tr>
     </thead>
     <tbody>
     <% @batch.students.each do |student| %>
-      <tr>
+      <tr style="height: 50px">
         <td> <%= student.first_name %></td>
         <td> <%= student.last_name %></td>
+        <% if !student.progress.blank? %>
         <td style="text-align:center"> <%= student.progress.passed %>/<%=student.progress.total%> </td>
-      </tr>
+        <td style="text-align:center"> <%= time_ago_in_words(student.progress.updated_at) %> ago </td>
+        <% end %>
+      </tr> 
       <% end %>
     </tbody>
   </table>

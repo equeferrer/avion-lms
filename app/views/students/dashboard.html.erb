@@ -5,7 +5,7 @@
       <div class="btn big-box border-1">
         <u> Summary <br> </u>
         <% if current_student.progress.blank? %>
-          Progress has not been saved. Start tracking your progress now!
+          <br> <span style="font-size:28px">Progress has not been saved<span>
         <% else %>
           <div class="circle" style="margin-top:20px;"> 
             <div><%= current_student.progress.passed %> / <%= current_student.progress.total %> </div>
@@ -14,7 +14,7 @@
         <% end %>
       </div> <br>
       <% if current_student.progress.blank? %>
-        <%= link_to 'View My Progress', progresses_new_path, class:"btn sml-box btn-secondary border-3" %> <br>
+        <%= link_to 'Start tracking my progress', progresses_new_path, class:"btn sml-box btn-secondary border-3" %> <br>
       <% else %>
         <%= link_to 'View My Progress', progress_show_path(current_student.progress), class:"btn sml-box btn-secondary border-3" %> <br>
       <% end %>
@@ -22,10 +22,10 @@
     <div class="col-5">
       <%= link_to 'View All Lessons', lessons_path, class:"btn sml-box  btn-secondary border-2" %> <br>
       <div class="btn big-box border-4 light-font">
-        <u> Batch Details <br> </u>
-        Batch Name: <%= current_student.batch.name %> <br>
+        <b><u>Batch Details</u></b>
+        <span style="font-size:30px"> Batch Name: <%= current_student.batch.name %> <br>
         Start date: <%= current_student.batch.start_date.strftime('%b. %e, %Y') %> <br>
-        End date: <%= current_student.batch.end_date.strftime('%b. %e, %Y') %>
+        End date: <%= current_student.batch.end_date.strftime('%b. %e, %Y') %> </span>
       </div>
     </div>
   </div>
